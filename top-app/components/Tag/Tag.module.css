@@ -1,0 +1,32 @@
+.p {
+	display: inline-block;
+
+	box-sizing: border-box;
+	margin-right: 5px;
+	border-radius: 20px;
+}
+
+.s {
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1;
+}
+
+.l {
+	padding: 5px 10px;
+	font-size: 14px;
+	line-height: 1;
+}
+
+.ghost {
+	border: 1px solid var(--grey-light);
+}
+
+.red {
+	color: var(--white);
+	background: #DE0000;
+	font-weight: bold;
+}
+
+
+

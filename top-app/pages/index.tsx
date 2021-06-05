@@ -1,8 +1,5 @@
-import Head from "next/head";
-import Image from "next/image";
 import React from "react";
-import { Button } from "../components";
-import { P } from "../components/P/P";
+import { Button, Tag, P } from "../components";
 
 export default function Home(): JSX.Element {
 	return (
@@ -16,6 +13,9 @@ export default function Home(): JSX.Element {
 			<P size="l">Big</P>
 			<P>Middle</P>
 			<P size="s">Small</P>
+			<Tag size="s" color="ghost">Ghost</Tag>
+			<Tag size="m" color="primary">Ghost</Tag>
+			<Tag size="m" color="ghost" href={"https://www.google.com"}>Ghost</Tag>
 		</div>
 	);
 }

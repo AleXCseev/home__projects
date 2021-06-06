@@ -15,7 +15,9 @@ export default function Home(): JSX.Element {
 			<P size="s">Small</P>
 			<Tag size="s" color="ghost">Ghost</Tag>
 			<Tag size="m" color="primary">Ghost</Tag>
-			<Tag size="m" color="ghost" href={"https://www.google.com"}>Ghost</Tag>
+			<Tag size="m" color="green">Ghost</Tag>
+			<Tag size="m" color="grey">Ghost</Tag>
+			<Tag size="m" color="red" href={"https://www.google.com"}>Ghost</Tag>
 		</div>
 	);
 }

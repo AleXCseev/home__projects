@@ -19,6 +19,7 @@
     "extends": [
         "eslint:recomended",
         "plugin:@typescript-eslint/eslint-recomended",
-        "plugin@typescript-eslint/recomended"
+        "plugin@typescript-eslint/recomended",
+        "plugin:react-hooks/recomended"
     ]
 }

@@ -40,12 +40,12 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
 		};
 	}
 
-	// const { data: menu } = await axios.post<MenuItem[]>(
-	// 	process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-	// 	{
-	// 		firstCategory,
-	// 	},
-	// );
+	const { data: menu } = await axios.post<MenuItem[]>(
+		process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
+		{
+			firstCategory,
+		},
+	);
 	
     const { data: page } = await axios.get<TopPageModel>(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/byAlias/" + params.alias);
 	const { data: products } = await axios.post<ProductModel[]>(process.env.NEXT_PUBLIC_DOMAIN + "/api/product/find", {
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
 	});
 	return {
 		props: {
-			// menu,
+			menu,
 			firstCategory,
 			page,
 			products,
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
 };
 
 interface CourseProps extends Record<string, unknown> {
-	// menu: MenuItem[];
+	menu: MenuItem[];
 	firstCategory: number;
 	page: TopPageModel;
 	products: ProductModel[];

@@ -1,10 +1,7 @@
 {
-  "/[type]/[alias]": "pages/[type]/[alias].js",
-  "/[type]": "pages/[type].js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/search": "pages/search.js",
   "/_error": "pages/_error.js",
-  "/404": "pages/404.html"
+  "/": "pages/index.js",
+  "/[type]/[alias]": "pages/[type]/[alias].js"
 }

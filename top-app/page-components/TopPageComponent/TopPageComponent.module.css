@@ -43,3 +43,7 @@
 .seo li {
     margin-top: 20px;
 }
+
+.seo li:last-child {
+    margin-bottom: 20px;
+}

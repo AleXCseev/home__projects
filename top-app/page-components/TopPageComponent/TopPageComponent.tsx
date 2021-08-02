@@ -22,7 +22,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
                 <Tag color="red" size="m">hh.ru</Tag>
             </div>
             {firstCategory == TopLevelCategory.Courses && page.hh && <HhData {...page.hh}></HhData>}
-            {page.advantages && page.advantages.length > 0 && <>
+            {page.advantages && page.advantages.length > 1 && <>
                     <Htag tag="h2">Преимущества</Htag>
                     <Advantages advantages={page.advantages}></Advantages>
                 </>

@@ -1,5 +1,5 @@
-import { GetStaticPaths, GetStaticPathsContext, GetStaticProps, GetStaticPropsContext } from "next";
-import React, { useState } from "react";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import React from "react";
 import { withLayout } from "../../layout/Layout";
 import axios from "axios";
 import { MenuItem } from "../../interfaces/menu.inteface";

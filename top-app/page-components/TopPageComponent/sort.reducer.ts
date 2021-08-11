@@ -13,7 +13,7 @@ export const sortReducer = ( state:SortReducerState, action: SortActions ): Sort
         case SortEnum.Raiting:
             return {
                 sort: SortEnum.Raiting,
-                products: state.products.sort((a, b) => a.initialRaiting > b.initialRaiting ? -1 : 1)
+                products: state.products.sort((a, b) => a.initialRaiting > b.initialRaiting ? 1 : -1)
             };
         case SortEnum.Price:
             return {

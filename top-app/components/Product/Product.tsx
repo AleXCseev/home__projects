@@ -4,12 +4,19 @@ import cn from "classnames";
 import React from "react";
 import { Button, Card, Divider, Raiting, Tag } from "..";
 import { declOfNum, priceRu } from "../../helpers/helpers";
+import Image from "next/image";
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	return (
 		<Card className={styles.product}>
 			<div className={styles.logo}>
-				<img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} />
+				<Image
+					src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
+					alt={product.title}
+					width={70}
+					height={70}
+				/>
+				{/* <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /> */}
 			</div>
 			<div className={styles.title}>
 				{product.title}
@@ -61,7 +68,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 					</div>
 				}
 			</div>
-			<Divider className={styles.hr}></Divider>
+			<Divider className={cn(styles.hr, styles.hr2)}></Divider>
 			<div className={styles.actions}>
 				<Button appearance="primary">Узнать подробнее</Button>
 				<Button appearance="ghost" arrow={'right'} className={styles.reviewButton}>Читать отзывы</Button>

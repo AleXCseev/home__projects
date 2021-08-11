@@ -17,6 +17,7 @@
 
 .price, .priceTitle {
 	grid-column: pricestart / priceend;
+	white-space: nowrap;
 }
 
 .credit, .creditTitle {
@@ -25,6 +26,7 @@
 
 .raiting, .rateTitle {
 	grid-column: ratestart / end;
+	white-space: nowrap;
 }
 
 .hr, .description, .actions {
@@ -133,4 +135,137 @@
 .characteristicsDots {
 	border-bottom: 1px dashed var(--green-light);
 	margin-bottom: 5px;
+}
+
+@media (max-width: 1320px) {
+	.product {
+		grid-template-areas:
+			"logo . title title title title title"
+			"logo . tags tags tags tags tags"
+			"price price price . credit . raiting"
+			"priceTitle priceTitle priceTitle . creditTitle . rateTitle"
+			"hr hr hr hr hr hr hr"
+			"description description description description description description description"
+			"feature feature feature feature feature feature feature"
+			"advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
+			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+			"actions actions actions actions actions actions actions"
+		;
+		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+		
+	}
+	.logo {
+		grid-area: logo;
+		margin-bottom: 20px;
+	}
+	.title {
+		grid-area: title;
+	}
+	.tags {
+		grid-area: tags;
+	}
+	.price {
+		grid-area: price;
+	}
+	.credit {
+		grid-area: credit;
+	}
+	.raiting {
+		grid-area: raiting;
+	}
+	.priceTitle {
+		grid-area: priceTitle;
+	}
+	.creditTitle {
+		grid-area: creditTitle;
+	}
+	.rateTitle {
+		grid-area: rateTitle;
+	}
+	.hr {
+		grid-area: hr;
+	}
+	.hr2 {
+		grid-area: hr2;
+	}
+	.description {
+		grid-area: description;
+	}
+	.feature {
+		grid-area: feature;
+		margin-bottom: 20px;
+	}
+	.advBlock {
+		grid-area: advBlock;
+	}
+	.actions {
+		grid-area: actions;
+	}
+	.characteristics {
+		padding: 0;
+	}
+}
+
+@media (max-width: 640px) {
+	.product {
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"rateTitle rateTitle raiting"
+			"hr hr hr"
+			"description description description"
+			"feature feature feature"
+			"advBlock advBlock advBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions"
+		;
+		grid-template-columns: 70px 30px 1fr;
+	}
+	.price {
+		margin-bottom: 10px;
+	}
+	.credit {
+		margin-bottom: 10px;
+	}
+	.raiting {
+		margin-bottom: 10px;
+	}
+	.tags {
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.product {
+		grid-template-areas:
+			"logo"
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"raiting"
+			"rateTitle"
+			"hr"
+			"description"
+			"feature"
+			"advBlock"
+			"hr2"
+			"actions"
+		;
+		grid-template-columns: 1fr;
+		padding: 15px;
+	}
+	.actions {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+	}
+	.reviewButton {
+		margin: 0;
+		align-self: flex-start;
+	}
 }

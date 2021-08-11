@@ -21,7 +21,7 @@ export const Search = ({  children, className, ...props }: SearchProps): JSX.Ele
 		})
 	}
 
-	const handleKeyDown = (e: KeyboardEvent) => {
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if( e.key == "Enter") {
 			goToSearch();
 		}

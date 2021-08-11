@@ -78,6 +78,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }: GetS
 			category: page.category,
 			limit: 10,
 		});
+
 		return {
 			props: {
 				menu,

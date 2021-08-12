@@ -2,7 +2,7 @@ import { ProductProps } from "./Product.props";
 import styles from "./Product.module.css";
 import cn from "classnames";
 import React, { useState } from "react";
-import { Button, Card, Divider, Raiting, Review, Tag } from "..";
+import { Button, Card, Divider, Raiting, Review, ReviewForm, Tag } from "..";
 import { declOfNum, priceRu } from "../../helpers/helpers";
 import Image from "next/image";
 
@@ -86,8 +86,13 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				[styles.closed]: !isReviewOpened
 			})}>
 				{product.reviews.map(r => (
-					<Review review={r} key={r._id}></Review>
+					<div key={r._id}>
+						<Review review={r}></Review>
+						<Divider></Divider>
+					</div>
+					
 				))}
+				<ReviewForm productId={product._id}></ReviewForm>
 			</Card>		
 		</>
 		

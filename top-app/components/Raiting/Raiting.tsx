@@ -1,10 +1,10 @@
 import { RaitingProps } from "./Raiting.props";
 import styles from "./Raiting.module.css";
 import cn from "classnames";
-import { useEffect, useState, KeyboardEvent } from "react";
+import { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef } from "react";
 import StarIcon from "./star.svg"
 
-export const Raiting = ({ isEditable = false, raiting, setRaiting, ...props }: RaitingProps): JSX.Element => {
+export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, ...props }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [raitingArray, setRaitingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
 
 	useEffect(() => {
@@ -55,7 +55,7 @@ export const Raiting = ({ isEditable = false, raiting, setRaiting, ...props }: R
 	}
 
 	return (
-		<div {...props}>
+		<div {...props} ref={ref}>
 			{raitingArray.map((el: JSX.Element, index: number) => {
 				return(
 					<span key={index}>{el}</span>
@@ -63,4 +63,4 @@ export const Raiting = ({ isEditable = false, raiting, setRaiting, ...props }: R
 			})}
 		</div>
 	);
-};
+});

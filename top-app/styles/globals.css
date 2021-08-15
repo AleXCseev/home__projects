@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	padding: 0;
 	color: var(--black);
-	background: #E5E5E5;
+	background: #e5e5e5;
 
 	font-family: "Noto Sans KR", sans-serif;
 }
@@ -26,10 +26,11 @@ a {
 	--primary: #7653fc;
 	--primary-hover: #3f1bcf;
 	--red: #de0000;
+	--red-light: #ff3535;
 	--green: #1dc37e;
 	--green-light: #c8f8e4;
 	--grey: #a4a4a4;
 	--grey-light: #ebebeb;
-	--grey-dark: #787D85;
+	--grey-dark: #787d85;
 	--font-famaly: "Noto Sans KR", sans-serif;
 }

@@ -2,7 +2,7 @@
 	font-size: 14px;
 	line-height: 24px;
 	display: grid;
-	grid-template-columns: [start] auto 1fr auto [end]; 
+	grid-template-columns: [start] auto 1fr auto [end];
 	gap: 20px 30px;
 	align-items: center;
 }
@@ -20,7 +20,7 @@
 }
 
 .info {
- margin-left: 15px;
+	margin-left: 15px;
 }
 
 .raiting {
@@ -37,6 +37,18 @@
 	margin-top: 20px;
 }
 
+.error {
+	background-color: var(--red-light);
+	padding: 20px;
+	position: relative;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+.error .close path {
+	stroke: var(--red);
+}
+
 .successTitle {
 	font-weight: bold;
 }
@@ -50,7 +62,7 @@
 
 @media (max-width: 1100px) {
 	.reviewForm {
-		grid-template-columns: [start] 1fr 1fr [end]; 
+		grid-template-columns: [start] 1fr 1fr [end];
 	}
 	.raiting {
 		grid-column: start / end;
@@ -63,7 +75,7 @@
 
 @media (max-width: 640px) {
 	.reviewForm {
-		grid-template-columns: [start] 1fr [end]; 
+		grid-template-columns: [start] 1fr [end];
 	}
 	.raiting {
 		grid-column: start / end;
@@ -73,4 +85,3 @@
 		justify-self: normal;
 	}
 }
-

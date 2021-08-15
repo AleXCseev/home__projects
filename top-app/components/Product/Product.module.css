@@ -14,6 +14,10 @@
 	grid-column: titlestart / middle;
 }
 
+.rateTitle a {
+	color: (--primary);
+}
+
 
 .price, .priceTitle {
 	grid-column: pricestart / priceend;

@@ -30,7 +30,7 @@ export const Search = ({  children, className, ...props }: SearchProps): JSX.Ele
 	return (
 		<div className={cn( className, styles.search)} {...props}>
 			<Input
-				className={styles.input}
+				className={styles.inputSearch}
 				placeholder="Поиск..."
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}

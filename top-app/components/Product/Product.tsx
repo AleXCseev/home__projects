@@ -54,7 +54,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 					{priceRu(product.credit)}/<span className={styles.month}>мес</span>
 				</div>
 				<div className={styles.raiting}>
-					<Raiting raiting={product.reviewAvg ?? product.initialRaiting}></Raiting>
+					<Raiting raiting={product.reviewAvg ?? product.initialRating}></Raiting>
 				</div>
 				<div className={styles.tags}>
 					{product.categories.map((c) => (

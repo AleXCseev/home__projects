@@ -14,7 +14,7 @@ export const TopPageComponent = ({
 }: TopPageComponentProps): JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, {
 		products,
-		sort: SortEnum.Raiting,
+		sort: SortEnum.Rating,
 	});
 
 	const setSort = (sort: SortEnum) => {
@@ -24,6 +24,7 @@ export const TopPageComponent = ({
 	useEffect(() => {
 		dispathSort({ type: "reset", initialState: products });
 	}, [products]);
+
 
 	return (
 		<div className={styles.wrapper}>

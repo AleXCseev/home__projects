@@ -7,9 +7,9 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Ele
 	return (
 		<div className={cn(styles.sort, className)} {...props}>
 			<span 
-				onClick={() => setSort(SortEnum.Raiting)}
+				onClick={() => setSort(SortEnum.Rating)}
 				className={cn({
-					[styles.active]: sort == SortEnum.Raiting
+					[styles.active]: sort == SortEnum.Rating
 				})}
 			>
 				<SortIcon className={styles.sortIcon}></SortIcon>

@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var SortEnum;\n\n(function (SortEnum) {\n  SortEnum[SortEnum[\"Raiting\"] = 0] = \"Raiting\";\n  SortEnum[SortEnum[\"Price\"] = 1] = \"Price\";\n})(SortEnum || (SortEnum = {}));","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from \"./TopPageComponent/TopPageComponent\";","map":{"version":3,"sources":["/Users/konstantinalekseev/Desktop/home__projects/top-app/page-components/index.ts"],"names":[],"mappings":"AAAA,cAAc,qCAAd","sourcesContent":["export * from \"./TopPageComponent/TopPageComponent\""]},"metadata":{},"sourceType":"module"}

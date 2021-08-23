@@ -5,7 +5,7 @@ import React, { ForwardedRef, forwardRef, useRef, useState } from "react";
 import { Button, Card, Divider, Raiting, Review, ReviewForm, Tag } from "..";
 import { declOfNum, priceRu } from "../../helpers/helpers";
 import Image from "next/image";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export const Product = motion(forwardRef(({ product, className, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)

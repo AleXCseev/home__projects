@@ -1,15 +1,20 @@
 import { RaitingProps } from "./Raiting.props";
 import styles from "./Raiting.module.css";
 import cn from "classnames";
-import { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef } from "react";
+import { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef, useRef } from "react";
 import StarIcon from "./star.svg"
 
 export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, error, ...props }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [raitingArray, setRaitingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
+	const raitingArrayRef = useRef<(HTMLSpanElement | null)[]>(null)
 
 	useEffect(() => {
 		constructRaiting(raiting);
 	}, [raiting])
+
+	const computeFocus = (r:number, i:number): number => {
+
+	}
 
 	const constructRaiting = (currentRaiting: number) => {
 		const updatedArray = raitingArray.map((el: JSX.Element, index: number) => {
@@ -22,10 +27,12 @@ export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, er
 					onMouseEnter={() => changeDisplay(index + 1)}
 					onMouseLeave={() => changeDisplay(raiting)}
 					onClick={() => onClick(index + 1)}
+					tabIndex={computeFocus(raiting, i)}
+					onKeyDown={handelKey}
+					ref={ r => raitingArrayRef.current?.push(r)}
 				>
 					<StarIcon 
-						tabIndex={isEditable ? 0 : -1}
-						onKeyDown={(e: KeyboardEvent<SVGAElement>) => isEditable && handelSpace(index + 1, e)}
+						
 					></StarIcon>
 				</span>
 			);
@@ -47,11 +54,26 @@ export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, er
 		setRaiting(index)
 	}
 
-	const handelSpace = (index: number, e: KeyboardEvent<SVGAElement>) => {
-		if (e.code != "Space" || !setRaiting) {
-			return;
+	const handelKey = (e: KeyboardEvent) => {
+		if (!isEditable || !setRaiting) {
+			return
+		};
+		if (e.code == "ArrowRight" || e.code == "ArrowUp" ) {
+			if(!raiting) {
+				setRaiting(1)
+			} else {
+				e.preventDefault()
+				setRaiting(raiting < 5 ? raiting + 1 : 5);
+			}
+		};
+		if (e.code == "ArrowLeft" || e.code == "ArrowDown" ) {
+			if(!raiting) {
+				setRaiting(1)
+			} else {
+				e.preventDefault()
+				setRaiting(raiting > 1 ? raiting - 1 : 1);
+			}
 		}
-		setRaiting(index)
 	}
 
 	return (

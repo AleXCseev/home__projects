@@ -34,7 +34,7 @@ const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
 			</a>
 			<Header className={styles.header}></Header>
 			<Sidebar className={styles.sidebar}></Sidebar>
-			<div className={styles.body} ref={bodyRef} tabIndex={0}>{children}</div>
+			<main className={styles.body} ref={bodyRef} tabIndex={0} role="main">{children}</main>
 			<Footer className={styles.footer}></Footer>
 			<Up></Up>
 		</div>

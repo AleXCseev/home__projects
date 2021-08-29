@@ -25,13 +25,12 @@ export const TopPageComponent = ({
 		dispathSort({ type: "reset", initialState: products });
 	}, [products]);
 
-
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.title}>
 				<Htag tag="h1">{page.title}</Htag>
 				{products && (
-					<Tag color="grey" size="m">
+					<Tag color="grey" size="m" aria-label={products.length + " элементов"}>
 						{products.length}
 					</Tag>
 				)}

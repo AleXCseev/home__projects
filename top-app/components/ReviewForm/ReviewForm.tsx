@@ -9,7 +9,12 @@ import { IReviewForm, IReviewSendResponse } from "./ReviewForm.interface";
 import axios from "axios";
 import { API } from "../../helpers/api";
 
-export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
+export const ReviewForm = ({
+	productId,
+	isOpened,
+	className,
+	...props
+}: ReviewFormProps): JSX.Element => {
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [error, setIsError] = useState<string>();
 	const {
@@ -18,6 +23,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 		handleSubmit,
 		formState: { errors },
 		reset,
+		clearErrors
 	} = useForm<IReviewForm>();
 
 	const onSubmit = async (formData: IReviewForm) => {
@@ -45,6 +51,8 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 					{...register("name", { required: { value: true, message: "Заполните имя" } })}
 					placeholder="Имя"
 					error={errors.name}
+					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.name ? true : false}
 				></Input>
 				<Input
 					{...register("title", {
@@ -53,6 +61,8 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 					className={styles.title}
 					placeholder="Заголовок"
 					error={errors.title}
+					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.title ? true : false}
 				></Input>
 				<div className={styles.raiting}>
 					<span>Оценка:</span>
@@ -67,6 +77,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 								isEditable={true}
 								setRaiting={field.onChange}
 								error={errors.rating}
+								tabIndex={isOpened ? 0 : -1}
 							></Raiting>
 						)}
 					/>
@@ -78,9 +89,14 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 					className={styles.description}
 					placeholder="Текст отзыва"
 					error={errors.description}
+					tabIndex={isOpened ? 0 : -1}
+					aria-label="текст отзыва"
+					aria-invalid={errors.description ? true : false}
 				></Textarea>
 				<div className={styles.submit}>
-					<Button appearance="primary">Отправить</Button>
+					<Button appearance="primary" tabIndex={isOpened ? 0 : -1} onClick={() => clearErrors()}>
+						Отправить
+					</Button>
 					<span className={styles.info}>
 						* Перед публикацией отзыв пройдет предварительную модерацию и проверку
 					</span>

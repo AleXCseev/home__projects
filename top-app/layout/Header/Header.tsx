@@ -4,13 +4,14 @@ import cn from "classnames";
 import Logo from "../logo.svg"
 import React, { useEffect, useState } from "react";
 import { ButtonIcon } from "../../components";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Sidebar } from "../Sidebar/Sidebar";
 import { useRouter } from "next/router"
 
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	const [isOpened, setIsOpened] = useState<boolean>(false)
 	const router = useRouter()
+	const shouldReducedMotion = useReducedMotion()
 
 	useEffect(() => {
 		setIsOpened(false)
@@ -25,7 +26,7 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 			}
 		},
 		closed: {
-			opacity: 0,
+			opacity: shouldReducedMotion ? 1 : 0,
 			x: "100%",
 		}
 	}

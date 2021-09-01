@@ -19,6 +19,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
+    "/[type]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/[type].js"
+    ],
     "/[type]/[alias]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

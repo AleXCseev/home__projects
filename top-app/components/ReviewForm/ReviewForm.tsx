@@ -103,24 +103,30 @@ export const ReviewForm = ({
 				</div>
 			</div>
 			{isSuccess && (
-				<div className={styles.success}>
+				<div className={styles.success} role="alert">
 					<div className={styles.successTitle}>Ваш отзыв отправлен</div>
 					<div className={styles.description}>
 						Ваш отзыв будет опубликован после проверки
 					</div>
-					<CloseIcon
-						className={styles.close}
+					<button 
+						className={styles.close} 
 						onClick={() => setIsSuccess(false)}
-					></CloseIcon>
+						aria-label="Закрыть оповещение"
+					>
+						<CloseIcon></CloseIcon>
+					</button>
 				</div>
 			)}
 			{error && (
-				<div className={styles.error}>
+				<div className={styles.error} role="alert">
 					Что-то пошло не так, попробуйте обновить страницу
-					<CloseIcon
-						className={styles.close}
+					<button 
+						className={styles.close} 
 						onClick={() => setIsError(undefined)}
-					></CloseIcon>
+						aria-label="Закрыть оповещение"
+					>
+						<CloseIcon></CloseIcon>
+					</button>
 				</div>
 			)}
 		</form>

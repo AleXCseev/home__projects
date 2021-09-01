@@ -6,6 +6,7 @@ import { HhData } from "../../components/HhData/HhData";
 import { TopLevelCategory } from "../../interfaces/toppage.interface";
 import { SortEnum } from "../../components/Sort/Sort.props";
 import { sortReducer } from "./sort.reducer";
+import { useReducedMotion } from "framer-motion"
 
 export const TopPageComponent = ({
 	page,
@@ -16,6 +17,8 @@ export const TopPageComponent = ({
 		products,
 		sort: SortEnum.Rating,
 	});
+
+	const shouldReducedMotion = useReducedMotion()
 
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
@@ -36,9 +39,9 @@ export const TopPageComponent = ({
 				)}
 				<Sort sort={sort} setSort={setSort}></Sort>
 			</div>
-			<div>
+			<div role="list">
 				{sortedProducts &&
-					sortedProducts.map((p) => <Product layout key={p._id} product={p}></Product>)}
+					sortedProducts.map((p) => <Product role="listitem" layout={shouldReducedMotion ? false : true} key={p._id} product={p}></Product>)}
 			</div>
 			<div className={styles.hhTitle}>
 				<Htag tag="h2">Вакансии - {page.category}</Htag>
@@ -68,3 +71,7 @@ export const TopPageComponent = ({
 		</div>
 	);
 };
+function useReduceMotion() {
+	throw new Error("Function not implemented.");
+}
+

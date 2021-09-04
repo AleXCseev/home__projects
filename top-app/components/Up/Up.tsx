@@ -20,12 +20,13 @@ export const Up = (): JSX.Element => {
 		});
 	};
 	return (
-		<motion.div
-			className={styles.up}
-			animate={controls}
-			initial={{ opacity: 0 }}
-		>
-			<ButtonIcon appearance="primary" icon="up" onClick={scrollToTop}></ButtonIcon>
+		<motion.div className={styles.up} animate={controls} initial={{ opacity: 0 }}>
+			<ButtonIcon
+				appearance="primary"
+				icon="up"
+				onClick={scrollToTop}
+				aria-label="Наверх"
+			></ButtonIcon>
 		</motion.div>
 	);
 };

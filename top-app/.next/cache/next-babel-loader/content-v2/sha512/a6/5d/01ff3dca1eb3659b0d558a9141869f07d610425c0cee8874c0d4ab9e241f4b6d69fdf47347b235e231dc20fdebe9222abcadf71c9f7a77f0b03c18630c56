@@ -1,0 +1,1 @@
+{"ast":null,"code":"import up from \"./up.svg\";\nimport close from \"./close.svg\";\nimport menu from \"./menu.svg\";\nexport var icons = {\n  up: up,\n  close: close,\n  menu: menu\n};","map":null,"metadata":{},"sourceType":"module"}

@@ -8,6 +8,7 @@ import { API } from "../helpers/api";
 
 function Home({ menu }: HomeProps): JSX.Element {
 	const [raiting, setRaiting] = useState<number>(4);
+
 	return (
 		<>
 			<Button appearance={"primary"} arrow="down">

@@ -9,24 +9,24 @@ import { Up } from "../components";
 import cn from "classnames";
 
 const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
-	const [isSkipLinkDisplayed, setIsSkipLinkDisplayed] = useState<boolean>(false) 
+	const [isSkipLinkDisplayed, setIsSkipLinkDisplayed] = useState<boolean>(false);
 	const bodyRef = useRef<HTMLDivElement>(null);
 
-	const skipContentAction = (key:KeyboardEvent) => {
+	const skipContentAction = (key: KeyboardEvent) => {
 		if (key.code == "Space" || key.code == "Enter") {
-			key.preventDefault()
-			bodyRef.current?.focus()
+			key.preventDefault();
+			bodyRef.current?.focus();
 		}
-		setIsSkipLinkDisplayed(false)
-	}
+		setIsSkipLinkDisplayed(false);
+	};
 
 	return (
 		<div className={styles.wrapper}>
-			<a 
-				tabIndex={1} 
+			<a
+				tabIndex={0}
 				className={cn(styles.skipLink, {
-					[styles.displayed]: isSkipLinkDisplayed
-			})}
+					[styles.displayed]: isSkipLinkDisplayed,
+				})}
 				onFocus={() => setIsSkipLinkDisplayed(true)}
 				onKeyDown={skipContentAction}
 			>
@@ -34,14 +34,18 @@ const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
 			</a>
 			<Header className={styles.header}></Header>
 			<Sidebar className={styles.sidebar}></Sidebar>
-			<main className={styles.body} ref={bodyRef} tabIndex={0} role="main">{children}</main>
+			<main className={styles.body} ref={bodyRef} tabIndex={0} role="main">
+				{children}
+			</main>
 			<Footer className={styles.footer}></Footer>
 			<Up></Up>
 		</div>
 	);
 };
 
-export const withLayout = <T extends Record<string, unknown> & IAppContext>(Component: FunctionComponent<T>) => {
+export const withLayout = <T extends Record<string, unknown> & IAppContext>(
+	Component: FunctionComponent<T>,
+) => {
 	return function withLayoutnComponent(props: T): JSX.Element {
 		return (
 			<AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>

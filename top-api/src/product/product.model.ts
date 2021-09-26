@@ -1,52 +1,47 @@
-import { prop } from "@typegoose/typegoose";
-import { TimeStamps, Base } from "@typegoose/typegoose/lib/defaultClasses";
+import { prop } from '@typegoose/typegoose';
+import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
 
 class ProductCharacteristic {
+  @prop()
+  name: string;
 
-    @prop()
-    name: string;
-
-    @prop()
-    value: string;
+  @prop()
+  value: string;
 }
 
 export interface ProductModule extends Base {}
 
 export class ProductModel extends TimeStamps {
+  @prop()
+  image: string;
 
-    @prop()
-    image: string;
+  @prop()
+  title: string;
 
-    @prop()
-    title: string;
+  @prop()
+  price: number;
 
-    @prop()
-    price: number;
+  @prop()
+  oldPrice?: number;
 
-    @prop()
-    oldPrice: number;
+  @prop()
+  credit: number;
 
-    @prop()
-    credit: number;
+  @prop()
+  description: string;
 
-    @prop()
-    calculatedRating: number;
+  @prop()
+  advantages: string;
 
-    @prop()
-    description: string;
+  @prop()
+  disadvantages: string;
 
-    @prop()
-    advantages: string;
+  @prop({ type: () => [String] })
+  categories: string[];
 
-    @prop()
-    disadvantages: string;
+  @prop({ type: () => [String] })
+  tags: string[];
 
-    @prop({ type: () => [String] })
-    categories: string[];
-
-    @prop({ type: () => [String] })
-    tags: string[];
-
-    @prop({ type: () => [ProductCharacteristic], _id: false })
-    characteristics: ProductCharacteristic[];
+  @prop({ type: () => [ProductCharacteristic], _id: false })
+  characteristics: ProductCharacteristic[];
 }

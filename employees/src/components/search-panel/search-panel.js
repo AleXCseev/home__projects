@@ -1,4 +1,5 @@
 
+import "./search-panel.css";
 
 export const SearchPanel = () => {
     return (

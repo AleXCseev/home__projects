@@ -4,12 +4,12 @@ import "./employees-list.css"
 
 export const EmployeesList = () => {
     const persons = useSelector((state) => state.persons.persons)
-
+    
 
     return (
         <ul className="app-list list-group">
             { 
-                persons.map((person, index) => <EmployeesListItem person={person} key={index}></EmployeesListItem>) 
+                persons.map((person, index) => <EmployeesListItem  key={index} {...person}></EmployeesListItem>) 
             }
         </ul>
     )

@@ -20,10 +20,13 @@ const persons = [
     }
 ]
 
+
+
 export const personSlice = createSlice({
     name: 'persons',
     initialState: {
         persons: persons,
+        sortedPersons: persons,
     },
     reducers: {
         addIncrease: (state, action) => {
@@ -47,6 +50,11 @@ export const personSlice = createSlice({
     },
 })
 
+
+
+
+
 export const { addIncrease, deletePerson, addNewPerson } = personSlice.actions
+
 
 export default personSlice.reducer

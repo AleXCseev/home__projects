@@ -4,12 +4,15 @@ import "./app-info.css";
 export const AppInfo = () => {
 	const persons = useSelector((state) => state.persons.persons)
 
-	const personsLength = persons.length
+	let personsLength = 0;
+	
 	let increaseLength = 0;
 
-	// console.log(persons)
-
-	persons.forEach(item => item.increase === true && increaseLength++)
+	if(persons) {
+		personsLength = persons.length;
+		persons.forEach(item => item.increase === true && increaseLength++)
+	}
+	
 
 	return (
 		<div className="app-info">

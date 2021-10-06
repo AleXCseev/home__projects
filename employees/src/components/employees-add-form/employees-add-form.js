@@ -14,7 +14,7 @@ export const EmployeesAddForm = () => {
         const person = {
             name: inputName,
             salary: +inputSalary,
-            id: new Date().toString(),
+            id: Date.now(),
             increase: false,
         }
         dispatch(addNewPerson(person))

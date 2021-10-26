@@ -67,52 +67,15 @@ export default {
         // changePage(pageNumber) {
         //     this.page = pageNumber;
         // },
-        async fetchPosts() {
-            try {
-                this.isPostLoading = true
-                const response = await axios.get("https://jsonplaceholder.typicode.com/posts", {
-                    params: {
-                        _page: this.page,
-                        _limit: this.limit,
-                    }
-                });
-                this.totalPage = Math.ceil(response.headers['x-total-count'] / this.limit)
-                this.posts = response.data
-            } catch (e) {
-                alert("Ошибка!")
-            } finally {
-                this.isPostLoading = false
-            }
-        },
-        async loadMorePosts() {
-            try {
-                this.page += 1;
-                const response = await axios.get("https://jsonplaceholder.typicode.com/posts", {
-                    params: {
-                        _page: this.page,
-                        _limit: this.limit,
-                    }
-                });
-                this.totalPage = Math.ceil(response.headers['x-total-count'] / this.limit)
-                this.posts = [...this.posts, ...response.data]
-            } catch (e) {
-                alert("Ошибка!")
-            }
-        }
+       
+        
     },
     mounted() {
         this.fetchPosts()
         
     },
     computed: {
-        sortedPosts() {
-            return [...this.posts].sort((post1, post2) => {
-                return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
-            })
-        },
-        sortedAndSearchedPosts() {
-            return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
-        }
+        
     },
     watch: {
         // page() {

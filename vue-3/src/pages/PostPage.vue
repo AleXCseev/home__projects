@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>Страница с постами</h1> 
-    <my-input v-model="searchQuery" placeholder="Поиск поста" v-focus/>
+    <my-input :model-value="searchQuery" @update:model-value="setSearchQuery" placeholder="Поиск поста" v-focus/>
     <div class="app__btns">
         <my-button @click="showDialog">Создать пост</my-button>
-        <my-select v-model="selectedSort" :options="sortOptions"></my-select>
+        <my-select :model-value="selectedSort" @update:model-value="setSelectedSort" :options="sortOptions"></my-select>
     </div>
     
     <my-dialog v-model:show="dialogVisible">
@@ -31,7 +31,7 @@
 <script>
 import PostForm from "@/components/PostForm.vue";
 import PostList from "@/components/PostList.vue";
-import axios from "axios";
+import {mapState, mapGetters, mapMutations, mapActions} from "vuex"
 
 export default {
     components: {
@@ -39,27 +39,27 @@ export default {
     },
     data() {
         return {
-            posts: [],
             dialogVisible: false,
-            isPostLoading: false,
-            selectedSort: "",
-            searchQuery: "",
-            page: 1,
-            limit: 10,
-            totalPage: 0,
-            sortOptions: [
-                {value: "title", name: "По названию"},
-                {value: "body", name: "По содержанию"},
-            ]
         }
     },
     methods: {
+        ...mapMutations({
+            setPage: 'post/setPage',
+            setSearchQuery: 'post/setSearchQuery',
+            setSelectedSort: 'post/setSelectedSort',
+            create: 'post/createPost',
+            remove: 'post/removePost'
+        }),
+        ...mapActions ({
+            loadMorePosts: 'post/loadMorePosts',
+            fetchPosts: 'post/fetchPosts'
+        }),
         createPost(post) {
-            this.posts.push(post);
+            this.create(post);
             this.dialogVisible = false;
         },
         removePost(post) {
-            this.posts = this.posts.filter(p => p.id !== post.id);
+            this.remove(post);
         },
         showDialog() {
             this.dialogVisible = true;
@@ -75,7 +75,20 @@ export default {
         
     },
     computed: {
-        
+        ...mapState({
+            posts: state => state.post.posts,
+            isPostLoading: state => state.post.isPostLoading,
+            selectedSort: state => state.post.selectedSort,
+            searchQuery: state => state.post.searchQuery,
+            page: state => state.post.page,
+            limit: state => state.post.limit,
+            totalPage: state => state.post.totalPage,
+            sortOptions: state => state.post.sortOptions
+        }),
+        ...mapGetters({
+            sortedPost: 'post/sortedPost',
+            sortedAndSearchedPosts: 'post/sortedAndSearchedPosts'
+        })
     },
     watch: {
         // page() {

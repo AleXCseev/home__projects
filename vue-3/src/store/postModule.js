@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const postModule = {
     state: () => ({
         posts: [],
@@ -40,13 +42,18 @@ export const postModule = {
         },
         setTotalPage(state, total) {
             state.totalPage = total
+        },
+        createPost(state, post) {
+            state.posts.push(post)
+        },
+        removePost(state, post) {
+            state.posts = state.posts.filter(p => p.id !== post.id);
         }
-
     },
     actions: {
         async fetchPosts({state, commit}) {
             try {
-                commit(setLoading, true)
+                commit('setLoading', true)
                 const response = await axios.get("https://jsonplaceholder.typicode.com/posts", {
                     params: {
                         _page: state.page,
@@ -56,9 +63,9 @@ export const postModule = {
                 commit('setTotalPage', Math.ceil(response.headers['x-total-count'] / state.limit));
                 commit('setPosts', response.data)
             } catch (e) {
-                alert("Ошибка!")
+                console.log(e)
             } finally {
-                commit(setLoading, false)
+                commit('setLoading', false)
             }
         },
         async loadMorePosts({state, commit}) {
@@ -73,8 +80,9 @@ export const postModule = {
                 commit('setTotalPage', Math.ceil(response.headers['x-total-count'] / state.limit))
                 commit('setPosts', [...state.posts, ...response.data])
             } catch (e) {
-                alert("Ошибка!")
+                console.log(e)
             }
         }
-    }
+    },
+    namespaced: true,
 }

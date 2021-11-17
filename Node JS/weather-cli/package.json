@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/AleXCseev",
     "email": "alexcseev1990@gmail.com"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }

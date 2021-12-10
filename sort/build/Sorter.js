@@ -2,9 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sorter = void 0;
 class Sorter {
-    constructor(collection) {
-        this.collection = collection;
-    }
     sort() {
         const { length } = this.collection;
         for (let i = 0; i < length; i++) {

@@ -20,3 +20,4 @@ for (let match of reader.data) {
 }
 
 console.log(manUnitedWins);
+

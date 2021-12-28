@@ -1,46 +1,39 @@
+import {useState, useEffect} from 'react';
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
+import useMarvelService from '../../services/MarvelService';
+
 import './randomChar.scss';
-import thor from '../../resources/img/thor.jpeg';
 import mjolnir from '../../resources/img/mjolnir.png';
-import { useCallback, useEffect, useState } from 'react';
-import { MarvelService } from "../../services/MarvelService"
-import { Spinner } from "../spinner/Spinner"
-import { ErrorMessage } from "../errorMessage/ErrorMessage"
 
 const RandomChar = () => {
-    const initialState = {
-        char: {
-            name: null,
-            description: null,
-            thumbnail: null,
-            homepage: null,
-            wiki: null,
-        },
-        loading: true,
-        error: false,
-    }
 
-    const [state, setState] = useState(initialState)
-    const marvelService = new MarvelService();
+    const [char, setChar] = useState(null);
 
-    const updateChar = () => {
-        const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        marvelService.getCharacter(id).then(res => {
-                setState({ char: res, loading: false, error: false })
-            })
-            .catch(setState({ loading: false, error: true }));
-    }
-
-    const { char, loading, error } = state
-
-    const errorMessage = error ? <ErrorMessage/> : null
-    const spinner = loading ? <Spinner/> : null
-    const content = !(loading || error) ? <View char={char} /> : null
+    const {loading, error, getCharacter, clearError} = useMarvelService();
 
     useEffect(() => {
-        updateChar()
+        updateChar();
+        const timerId = setInterval(updateChar, 60000);
+
+        return () => {
+            clearInterval(timerId)
+        }
     }, [])
 
-    console.log(state)
+    const onCharLoaded = (char) => {
+        setChar(char);
+    }
+
+    const updateChar = () => {
+        clearError()
+        const id = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
+        getCharacter(id).then(onCharLoaded)
+    }
+
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading ? <Spinner/> : null;
+    const content = !(loading || error || !char) ? <View char={char} /> : null;
 
     return (
         <div className="randomchar">
@@ -55,7 +48,7 @@ const RandomChar = () => {
                 <p className="randomchar__title">
                     Or choose another one
                 </p>
-                <button className="button button__main">
+                <button onClick={updateChar} className="button button__main">
                     <div className="inner">try it</div>
                 </button>
                 <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
@@ -64,29 +57,26 @@ const RandomChar = () => {
     )
 }
 
-const View = ({ char }) => {
-    const { name, description, thumbnail, homepage, wiki } = char
-
-    const sliceString = (str) => {
-        if( str ) {
-            return str.slice(0, 200) + "...";
-        }
-        return "Sorry, no character information"
+const View = ({char}) => {
+    const {name, description, thumbnail, homepage, wiki} = char;
+    let imgStyle = {'objectFit' : 'cover'};
+    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        imgStyle = {'objectFit' : 'contain'};
     }
 
-    return(
+    return (
         <div className="randomchar__block">
-            <img src={ thumbnail } alt="Random character" className="randomchar__img"/>
+            <img src={thumbnail} alt="Random character" className="randomchar__img" style={imgStyle}/>
             <div className="randomchar__info">
-                <p className="randomchar__name">{ name }</p>
+                <p className="randomchar__name">{name}</p>
                 <p className="randomchar__descr">
-                    { sliceString(description) }
+                    {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={ homepage } className="button button__main">
+                    <a href={homepage} className="button button__main">
                         <div className="inner">homepage</div>
                     </a>
-                    <a href={ wiki } className="button button__secondary">
+                    <a href={wiki} className="button button__secondary">
                         <div className="inner">Wiki</div>
                     </a>
                 </div>

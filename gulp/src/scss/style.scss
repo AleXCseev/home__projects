@@ -1,0 +1,16 @@
+@import "fonts";
+@import "main";
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+    flex-shrink: 0;
+    background-color: red;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 30px;
+}

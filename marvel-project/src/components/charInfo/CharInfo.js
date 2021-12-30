@@ -23,14 +23,15 @@ const CharInfo = (props) => {
         if (!charId) {
             return;
         }
-        clearError()
-        getCharacter(charId).then(onCharLoaded)
+
+        clearError();
+        getCharacter(charId)
+            .then(onCharLoaded)
     }
 
     const onCharLoaded = (char) => {
         setChar(char);
     }
-
 
     const skeleton = char || loading || error ? null : <Skeleton/>;
     const errorMessage = error ? <ErrorMessage/> : null;

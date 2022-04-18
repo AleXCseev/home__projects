@@ -4,7 +4,6 @@ import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import './singleComicPage.scss';
-import xMen from '../../resources/img/x-men.png';
 
 const SingleComicPage = () => {
     const { comicId } = useParams();
@@ -39,7 +38,7 @@ const SingleComicPage = () => {
     )
 }
 
-const View = ({comic}) => {
+const View = ({ comic }) => {
     const {title, description, pageCount, thumbnail, language, price} = comic
     return (
         <div className="single-comic">

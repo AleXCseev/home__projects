@@ -16,7 +16,7 @@ export const ReviewForm = ({
 	...props
 }: ReviewFormProps): JSX.Element => {
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
-	const [error, setIsError] = useState<string>();
+	const [error, setIsError] = useState<string | unknown>();
 	const {
 		register,
 		control,
@@ -40,7 +40,7 @@ export const ReviewForm = ({
 				setIsError("Что-то пошло не так");
 			}
 		} catch (e) {
-			setIsError(e.message);
+			// setIsError(e.message);
 		}
 	};
 

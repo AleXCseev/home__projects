@@ -1,6 +1,7 @@
+import { ILogger } from './logger.interface';
 import { Logger } from "tslog";
 
-export class LoggerService {
+export class LoggerService implements ILogger {
     public logger: Logger;
 
     constructor() {
@@ -17,10 +18,10 @@ export class LoggerService {
     }
 
     error(...args: unknown[]) {
-        this.logger.info(...args);
+        this.logger.error(...args);
     }
 
     warn(...args: unknown[]) {
-        this.logger.info(...args);
+        this.logger.warn(...args);
     }
 }

@@ -34,7 +34,7 @@ export class ProductModel extends TimeStamps {
   advantages: string;
 
   @prop()
-  disadvantages: string;
+  disAdvantages: string;
 
   @prop({ type: () => [String] })
   categories: string[];

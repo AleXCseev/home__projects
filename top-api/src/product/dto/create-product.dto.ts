@@ -33,7 +33,7 @@ export class CreateProductDto {
   advantages: string;
 
   @IsString()
-  disadvantages: string;
+  disAdvantages: string;
 
   @IsArray()
   @IsString({ each: true })
